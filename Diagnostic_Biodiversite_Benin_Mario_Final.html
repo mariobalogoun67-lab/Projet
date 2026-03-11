@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_406f96e286b7ef186cedfbafaa4fad3e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index:9999; 
+    background: white; padding: 12px 25px; border-radius: 8px; 
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1); text-align: center; width: auto; max-width: 80%;">
+        <span style="font-size: 14px; font-family: Arial, sans-serif; color: #000; font-weight: bold; line-height: 1.2;">
+        Diagnostic de la biodiversité et de<br>quelques aires protégées au Bénin
+        </span>
+    </div>
+    
+    <div style="position: fixed; bottom: 10px; right: 10px; z-index:9999; 
+    font-size: 11px; font-family: Arial; font-weight: bold; color: #000;">
+        BALOGOUN Gilchrist Mario
+    </div>
+    
+     <div style="position: fixed; bottom: 30px; left: 15px; width: 185px; background: white; 
+     border: 1px solid #ddd; z-index:9999; font-size: 10px; padding: 10px; border-radius: 5px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);">
+        <div style="margin-bottom: 4px;"><i style="background:#145a32; border-radius:50%; width:10px; height:10px; display:inline-block; margin-right:8px;"></i>Parcs Nationaux</div>
+        <div style="margin-bottom: 4px;"><i style="background:#27ae60; border-radius:50%; width:10px; height:10px; display:inline-block; margin-right:8px;"></i>Forêts Classées</div>
+        <div style="margin-bottom: 4px;"><i style="background:#d35400; border-radius:50%; width:10px; height:10px; display:inline-block; margin-right:8px;"></i>Réserves / Paysages</div>
+        <div><i style="background:#2980b9; border-radius:50%; width:10px; height:10px; display:inline-block; margin-right:8px;"></i>Aires Marines / Humides</div>
+     </div>
+    
+            <div class="folium-map" id="map_406f96e286b7ef186cedfbafaa4fad3e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_406f96e286b7ef186cedfbafaa4fad3e = L.map(
+                "map_406f96e286b7ef186cedfbafaa4fad3e",
+                {
+                    center: [9.3, 2.31],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_77c5c1b63646984211851ce4bfe2ac4f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_77c5c1b63646984211851ce4bfe2ac4f.addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+            var circle_marker_c5234c810f1f5e2e35f22c331acd83f0 = L.circleMarker(
+                [11.23, 1.48],
+                {"bubblingMouseEvents": true, "color": "#145a32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#145a32", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_e3058230ad2dfd8cc10894c2449f15ae = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c25400275c3dd3684b52929e469dc814 = $(`<div id="html_c25400275c3dd3684b52929e469dc814" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#145a32; font-size:13px; text-transform:uppercase;">Parc National de la Pendjari</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Nord-Ouest (Atacora)<br>         <b>📏 Superficie :</b> 275 500 ha<br>         <b>⚖️ Statut :</b> Parc National (Patrimoine mondial UNESCO)<br>         <b>🤝 Gestion :</b> African Parks Network (APN)<br>         <b>🐾 Biodiversité :</b> <i>Panthera leo (Lion), Acinonyx jubatus (Guépard)</i><br>         <b>⚠️ Menaces :</b> Braconnage, pressions sécuritaires<br>         <b>✨ Valeur Culturelle :</b> Terre sacrée des populations Waama et Berba     </div>     </div>`)[0];
+                popup_e3058230ad2dfd8cc10894c2449f15ae.setContent(html_c25400275c3dd3684b52929e469dc814);
+            
+        
+
+        circle_marker_c5234c810f1f5e2e35f22c331acd83f0.bindPopup(popup_e3058230ad2dfd8cc10894c2449f15ae)
+        ;
+
+        
+    
+    
+            var circle_marker_6dba4cb616f3d61776f322dfeaf57f5b = L.circleMarker(
+                [11.95, 2.45],
+                {"bubblingMouseEvents": true, "color": "#145a32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#145a32", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_d6b8bedd8fe10ca20a0de15e48d2a267 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e786eb4ebce8a18df64f25013d0d62ef = $(`<div id="html_e786eb4ebce8a18df64f25013d0d62ef" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#145a32; font-size:13px; text-transform:uppercase;">Parc National du W</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Nord-Est (Alibori)<br>         <b>📏 Superficie :</b> 563 280 ha<br>         <b>⚖️ Statut :</b> Parc National Transfrontalier<br>         <b>🤝 Gestion :</b> African Parks Network (APN)<br>         <b>🐾 Biodiversité :</b> <i>Loxodonta africana (Éléphant), Lycaon pictus</i><br>         <b>⚠️ Menaces :</b> Orpaillage clandestin, transhumance<br>         <b>✨ Valeur Culturelle :</b> Ancien carrefour historique du septentrion     </div>     </div>`)[0];
+                popup_d6b8bedd8fe10ca20a0de15e48d2a267.setContent(html_e786eb4ebce8a18df64f25013d0d62ef);
+            
+        
+
+        circle_marker_6dba4cb616f3d61776f322dfeaf57f5b.bindPopup(popup_d6b8bedd8fe10ca20a0de15e48d2a267)
+        ;
+
+        
+    
+    
+            var circle_marker_1a7ec737a9147b3112ed74648bbac95f = L.circleMarker(
+                [6.96, 2.16],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_1d52be964c2f65b5210c8700333a2687 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_58fbb5099774322d35156922d1b1a665 = $(`<div id="html_58fbb5099774322d35156922d1b1a665" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#27ae60; font-size:13px; text-transform:uppercase;">Forêt Classée de la Lama</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Sud (Atlantique/Zou)<br>         <b>📏 Superficie :</b> 16 250 ha<br>         <b>⚖️ Statut :</b> Forêt Classée (Sanctuaire animalier)<br>         <b>🤝 Gestion :</b> État (ONAB / DGEFC)<br>         <b>🐾 Biodiversité :</b> <i>Cercopithecus erythrogaster (Singe à ventre rouge)</i><br>         <b>⚠️ Menaces :</b> Fragmentation, prélèvement de bois de feu<br>         <b>✨ Valeur Culturelle :</b> Dernier vestige de forêt dense humide au Sud-Bénin     </div>     </div>`)[0];
+                popup_1d52be964c2f65b5210c8700333a2687.setContent(html_58fbb5099774322d35156922d1b1a665);
+            
+        
+
+        circle_marker_1a7ec737a9147b3112ed74648bbac95f.bindPopup(popup_1d52be964c2f65b5210c8700333a2687)
+        ;
+
+        
+    
+    
+            var circle_marker_41d8748c7b0b448ef896a57727e23683 = L.circleMarker(
+                [8.55, 1.95],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_9e3a600ba27d5f6e5cc938098fa79667 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_25f8d2ac590494ff4457e9daaca61f87 = $(`<div id="html_25f8d2ac590494ff4457e9daaca61f87" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#27ae60; font-size:13px; text-transform:uppercase;">Forêt Classée des Monts Kouffé</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Centre (Collines/Donga)<br>         <b>📏 Superficie :</b> 201 000 ha<br>         <b>⚖️ Statut :</b> Forêt Classée<br>         <b>🤝 Gestion :</b> État (DGEFC)<br>         <b>🐾 Biodiversité :</b> <i>Khaya senegalensis (Acajou), Afzelia africana</i><br>         <b>⚠️ Menaces :</b> Sciage artisanal illicite, feux tardifs<br>         <b>✨ Valeur Culturelle :</b> Zone de collines sacrées et de rituels ancestraux     </div>     </div>`)[0];
+                popup_9e3a600ba27d5f6e5cc938098fa79667.setContent(html_25f8d2ac590494ff4457e9daaca61f87);
+            
+        
+
+        circle_marker_41d8748c7b0b448ef896a57727e23683.bindPopup(popup_9e3a600ba27d5f6e5cc938098fa79667)
+        ;
+
+        
+    
+    
+            var circle_marker_028f88d083891371229fb9b6b703b28c = L.circleMarker(
+                [9.12, 2.15],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_f09c33a3f15f2bc8627cfc4269be8554 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_889fca257def7adf7acbb09cbf257993 = $(`<div id="html_889fca257def7adf7acbb09cbf257993" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#27ae60; font-size:13px; text-transform:uppercase;">Forêt Classée de Wari-Maro</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Centre (Borgou - Tchaourou)<br>         <b>📏 Superficie :</b> 115 000 ha<br>         <b>⚖️ Statut :</b> Forêt Classée<br>         <b>🤝 Gestion :</b> État (DGEFC)<br>         <b>🐾 Biodiversité :</b> <i>Pterocarpus erinaceus (Vène), Grands mammifères</i><br>         <b>⚠️ Menaces :</b> Charbonnage, exploitation forestière illicite<br>         <b>✨ Valeur Culturelle :</b> Bloc de protection géant contigu aux Monts Kouffé     </div>     </div>`)[0];
+                popup_f09c33a3f15f2bc8627cfc4269be8554.setContent(html_889fca257def7adf7acbb09cbf257993);
+            
+        
+
+        circle_marker_028f88d083891371229fb9b6b703b28c.bindPopup(popup_f09c33a3f15f2bc8627cfc4269be8554)
+        ;
+
+        
+    
+    
+            var circle_marker_0dc34f817a7468763f6506f4d3530268 = L.circleMarker(
+                [10.08, 2.25],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_8e2615364d9e32d323ae7771f0c48875 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9dbf70ee83c4426a242d4ded78e491a6 = $(`<div id="html_9dbf70ee83c4426a242d4ded78e491a6" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#27ae60; font-size:13px; text-transform:uppercase;">Forêt Classée de l'Ouémé Supérieur</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Centre-Nord (Borgou/Atacora)<br>         <b>📏 Superficie :</b> 193 406 ha<br>         <b>⚖️ Statut :</b> Forêt Classée (La plus vaste)<br>         <b>🤝 Gestion :</b> État (DGEFC)<br>         <b>🐾 Biodiversité :</b> <i>Khaya senegalensis, Essences soudaniennes</i><br>         <b>⚠️ Menaces :</b> Pression agricole, élevage transhumant<br>         <b>✨ Valeur Culturelle :</b> Réservoir hydrologique majeur du pays     </div>     </div>`)[0];
+                popup_8e2615364d9e32d323ae7771f0c48875.setContent(html_9dbf70ee83c4426a242d4ded78e491a6);
+            
+        
+
+        circle_marker_0dc34f817a7468763f6506f4d3530268.bindPopup(popup_8e2615364d9e32d323ae7771f0c48875)
+        ;
+
+        
+    
+    
+            var circle_marker_02b7927ab2ac4b231dd9e99a191baf2d = L.circleMarker(
+                [6.68, 2.47],
+                {"bubblingMouseEvents": true, "color": "#d35400", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d35400", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_fd97ab9ddcd44e5bb03c220e27065497 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d1d687afab567a5ae1196a804d599924 = $(`<div id="html_d1d687afab567a5ae1196a804d599924" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#d35400; font-size:13px; text-transform:uppercase;">Réserve de Togbota (Sitatunga)</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Sud-Est (Adjohoun - Vallée de l'Ouémé)<br>         <b>📏 Superficie :</b> Zone marécageuse<br>         <b>⚖️ Statut :</b> Réserve Naturelle Communautaire<br>         <b>🤝 Gestion :</b> ONG / Communautés locales<br>         <b>🐾 Biodiversité :</b> <i>Tragelaphus spekii (Sitatunga), Avifaune aquatique</i><br>         <b>⚠️ Menaces :</b> Braconnage, dégradation des zones humides<br>         <b>✨ Valeur Culturelle :</b> Modèle de conservation participative villageoise     </div>     </div>`)[0];
+                popup_fd97ab9ddcd44e5bb03c220e27065497.setContent(html_d1d687afab567a5ae1196a804d599924);
+            
+        
+
+        circle_marker_02b7927ab2ac4b231dd9e99a191baf2d.bindPopup(popup_fd97ab9ddcd44e5bb03c220e27065497)
+        ;
+
+        
+    
+    
+            var circle_marker_a28cbfd6b33bd69639a5bb185dbea190 = L.circleMarker(
+                [6.28, 1.85],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_406f96e286b7ef186cedfbafaa4fad3e);
+        
+    
+        var popup_83864b07d18b591333148f9df7b2551a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8d988fc9a9e18a5b96250d2c0b0bd08d = $(`<div id="html_8d988fc9a9e18a5b96250d2c0b0bd08d" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:11px; width:260px; line-height:1. 4;">         <b style="color:#2980b9; font-size:13px; text-transform:uppercase;">AMP de la Bouche du Roy</b><hr style="margin:5px 0;">         <b>📍 Localisation :</b> Sud-Ouest (Mono - Grand-Popo)<br>         <b>📏 Superficie :</b> 9 673 ha<br>         <b>⚖️ Statut :</b> Aire Marine Protégée Communautaire<br>         <b>🤝 Gestion :</b> ONG / Communautés locales<br>         <b>🐾 Biodiversité :</b> <i>Mangroves (Rhizophora), Tortues marines, Lamantins</i><br>         <b>⚠️ Menaces :</b> Érosion côtière, coupe des mangroves<br>         <b>✨ Valeur Culturelle :</b> Site de divinités hydriques (Zangbéto, Vodun)     </div>     </div>`)[0];
+                popup_83864b07d18b591333148f9df7b2551a.setContent(html_8d988fc9a9e18a5b96250d2c0b0bd08d);
+            
+        
+
+        circle_marker_a28cbfd6b33bd69639a5bb185dbea190.bindPopup(popup_83864b07d18b591333148f9df7b2551a)
+        ;
+
+        
+    
+</script>
+</html>
